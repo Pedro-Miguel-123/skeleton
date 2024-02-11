@@ -19,6 +19,7 @@
 	export let value: any;
 
 	// Context
+	export let disabled: boolean = getContext('disabled');
 	export let multiple: string = getContext('multiple');
 	export let rounded: CssClasses = getContext('rounded');
 	export let active: CssClasses = getContext('active');
@@ -119,9 +120,9 @@
 		<!-- NOTE: Don't use `hidden` as it prevents `required` from operating -->
 		<div class="h-0 w-0 overflow-hidden">
 			{#if multiple}
-				<input bind:this={elemInput} type="checkbox" {name} {value} bind:checked tabindex="-1" on:click on:change />
+				<input {disabled} bind:this={elemInput} type="checkbox" {name} {value} bind:checked tabindex="-1" on:click on:change />
 			{:else}
-				<input bind:this={elemInput} type="radio" bind:group {name} {value} tabindex="-1" on:click on:change />
+				<input {disabled} bind:this={elemInput} type="radio" bind:group {name} {value} tabindex="-1" on:click on:change />
 			{/if}
 		</div>
 		<!-- <slot /> -->
